@@ -3,6 +3,7 @@ from sklearn import datasets
 from sklearn import ensemble
 from typing import Tuple, Any
 import pandas as pd
+import numpy as np
 import os
 from sklearn.model_selection import train_test_split
 import joblib
@@ -24,12 +25,12 @@ def load_data() -> Tuple[pd.DataFrame]:
     return X, y
 
 
-def split_data(X: pd.DataFrame, y: pd.Series):
+def split_data(X: pd.DataFrame, y: pd.Series) -> Tuple[np.array]:
     """Split data into train and test split"""
     return train_test_split(X, y, random_state=123)
 
 
-def train_model(X: pd.DataFrame, y: pd.Series) -> None:
+def train_model(X: pd.DataFrame, y: pd.Series) -> Any:
     """Train RandomForest model
 
     Args:
