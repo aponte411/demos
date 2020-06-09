@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 
 from utils import utils
 
-MODEL_NAME = "randomforest"
+MODEL_NAME = os.environ.get("MODEL_NAME", "randomforest")
 MODEL_ARTIFACT = f"outputs/{MODEL_NAME}.pkl"
 
 
