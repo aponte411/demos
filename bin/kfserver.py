@@ -9,7 +9,7 @@ import tornado
 
 import kfserving
 
-MODEL_NAME = "randomforest"
+MODEL_NAME = os.environ.get("MODEL_NAME", "randomforest")
 MODEL_ARTIFACT = f"outputs/{MODEL_NAME}.pkl"
 
 
