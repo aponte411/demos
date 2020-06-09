@@ -1,3 +1,4 @@
+"""Script to serve model prediction"""
 import os
 from http import HTTPStatus
 from typing import Dict, List

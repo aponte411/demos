@@ -25,7 +25,8 @@ def load_data() -> Tuple[pd.DataFrame]:
 
 
 def split_data(X: pd.DataFrame, y: pd.Series):
-    return train_test_split(X, y)
+    """Split data into train and test split"""
+    return train_test_split(X, y, random_state=123)
 
 
 def train_model(X: pd.DataFrame, y: pd.Series) -> None:
@@ -57,7 +58,6 @@ def save_model(model: Any, path: str) -> None:
 def main():
     X, y = load_data()
     X_train, X_test, y_train, y_test = split_data(X=X, y=y)
-    print(X_test)
     model = train_model(X=X_train, y=y_train)
     predictions = model.predict(X_test)
     print(f"Train score: {model.score(X_train, y_train)}")
