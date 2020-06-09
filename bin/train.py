@@ -1,12 +1,12 @@
 """Script to train and save model"""
-from sklearn import datasets
-from sklearn import ensemble
-from typing import Tuple, Any
-import pandas as pd
-import numpy as np
 import os
-from sklearn.model_selection import train_test_split
+from typing import Any, Tuple
+
 import joblib
+import numpy as np
+import pandas as pd
+from sklearn import datasets, ensemble
+from sklearn.model_selection import train_test_split
 
 from utils import utils
 
