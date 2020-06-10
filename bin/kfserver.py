@@ -7,10 +7,13 @@ import joblib
 import numpy as np
 import tornado
 
+from utils import utils
+
 import kfserving
 
 MODEL_NAME = os.environ.get("MODEL_NAME", "randomforest")
-MODEL_ARTIFACT = f"outputs/{MODEL_NAME}.pkl"
+# TODO: load from s3
+MODEL_ARTIFACT = os.environ.get("MODEL_ARTIFACT", f"outputs/{MODEL_NAME}.pkl")
 
 
 class ModelService(kfserving.KFModel):
@@ -22,7 +25,7 @@ class ModelService(kfserving.KFModel):
 
     def load(self):
         """load training artifacts"""
-        self.model = joblib.load(self.model_artifact)
+        self.model = utils.load_model(self.model_artifact)
         self.ready = True
 
     def predict(self, request: Dict) -> Dict:

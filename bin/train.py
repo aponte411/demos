@@ -54,6 +54,7 @@ def save_model(model: Any, path: str) -> None:
     """
     utils.setup_file(path, overwrite=True)
     joblib.dump(model, open(path, 'wb'))
+    # TODO: push to s3
 
 
 def main():

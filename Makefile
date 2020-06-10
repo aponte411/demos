@@ -10,7 +10,7 @@ INPUT=input.json
 OUTPUT=predictions.json
 
 setup:
-	pip install -r /requirements.txt
+	pip install -r requirements.txt
 
 train:
 	PYTHONPATH=. python bin/train.py
@@ -19,8 +19,11 @@ build:
 	docker build -f Dockerfile -t ${IMAGE_TAG} .
 
 run: build
-	docker rm ${CONTAINER_NAME} || echo "Running container"
+	docker rm ${CONTAINER_NAME} || true
 	docker run --name ${CONTAINER_NAME} -it -p 8080:${PORT} ${IMAGE_TAG}
+
+serve:
+	PYTHONPATH=. python bin/kfserver.py
 
 request:
 	curl -X POST ${ENDPOINT} -H "Content-Type: application/json" -d @${INPUT} > ${OUTPUT}

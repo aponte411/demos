@@ -1,13 +1,13 @@
 # MLOps KFserving demo
 
-# Setup
+# Setup repository
 
 run `make setup`
 
-# Train
+# Train single model
 
 run `make train`
 
-# Serve model
+# Serve trained model
 
-run `make run`
+run `make serve`
