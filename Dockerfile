@@ -7,4 +7,4 @@ COPY . /root
 
 WORKDIR /root
 
-CMD python bin/kfserver.py
+CMD PYTHONPATH=. python bin/kfserver.py
