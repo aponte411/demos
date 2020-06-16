@@ -18,8 +18,17 @@ train:
 build:
 	docker build -f Dockerfile -t ${IMAGE_TAG} .
 
+train-in-container: build
+	-docker rm ${CONTAINER_NAME}
+	docker run -it \
+		--name ${CONTAINER_NAME} \
+		-v $(CURDIR)/outputs:/root/outputs \
+		-e "PYTHONPATH=." \
+		${IMAGE_TAG} \
+		python bin/train.py
+
 run: build
-	docker rm ${CONTAINER_NAME} || true
+	-docker rm ${CONTAINER_NAME}
 	docker run --name ${CONTAINER_NAME} -it -p 8080:${PORT} ${IMAGE_TAG}
 
 serve:
