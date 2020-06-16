@@ -1,5 +1,7 @@
 # MLOps KFserving demo
 
+https://www.youtube.com/watch?v=NNXoZ53gHyE&t=968s
+
 # Setup repository
 
 run `make setup`
